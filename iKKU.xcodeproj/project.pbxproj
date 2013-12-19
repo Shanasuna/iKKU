@@ -91,6 +91,8 @@
 		FFC72D351847C1320057AE55 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC72D341847C1320057AE55 /* UIImageView+AFNetworking.m */; };
 		FFC72D3818498D450057AE55 /* TabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC72D3718498D450057AE55 /* TabBarItem.m */; };
 		FFC72D3B18498D920057AE55 /* TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC72D3A18498D920057AE55 /* TabBar.m */; };
+		FFD4134618639D9A006E3FF8 /* btn_down.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD4134418639D9A006E3FF8 /* btn_down.png */; };
+		FFD4134718639D9A006E3FF8 /* btn_up.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD4134518639D9A006E3FF8 /* btn_up.png */; };
 		FFF81CC818536BF4009658C1 /* NewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF81CC718536BF4009658C1 /* NewsCell.m */; };
 		FFF81CD41853802E009658C1 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF81CD31853802E009658C1 /* GTMNSString+HTML.m */; };
 		FFF81CD8185395FB009658C1 /* EventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF81CD7185395FB009658C1 /* EventCell.m */; };
@@ -225,6 +227,8 @@
 		FFC72D3718498D450057AE55 /* TabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarItem.m; sourceTree = "<group>"; };
 		FFC72D3918498D920057AE55 /* TabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBar.h; sourceTree = "<group>"; };
 		FFC72D3A18498D920057AE55 /* TabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBar.m; sourceTree = "<group>"; };
+		FFD4134418639D9A006E3FF8 /* btn_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_down.png; sourceTree = "<group>"; };
+		FFD4134518639D9A006E3FF8 /* btn_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_up.png; sourceTree = "<group>"; };
 		FFF81CC618536BF4009658C1 /* NewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCell.h; sourceTree = "<group>"; };
 		FFF81CC718536BF4009658C1 /* NewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCell.m; sourceTree = "<group>"; };
 		FFF81CD21853802E009658C1 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
@@ -402,6 +406,8 @@
 		FF1136EC18472912001CADA6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FFD4134418639D9A006E3FF8 /* btn_down.png */,
+				FFD4134518639D9A006E3FF8 /* btn_up.png */,
 				FFF81CD9185504CA009658C1 /* ic_app@29.png */,
 				FFF81CDA185504CA009658C1 /* ic_app@40.png */,
 				FFF81CDB185504CA009658C1 /* ic_app@58.png */,
@@ -577,6 +583,7 @@
 				FF1136E91847290A001CADA6 /* ic_place.png in Resources */,
 				FF1136FC1847296E001CADA6 /* ic_pin_me.png in Resources */,
 				FF4CD189184CE111000B297D /* ic_place2.png in Resources */,
+				FFD4134618639D9A006E3FF8 /* btn_down.png in Resources */,
 				FFF81CE1185504CA009658C1 /* ic_app@29.png in Resources */,
 				FF1136FB1847296E001CADA6 /* ic_pin_library.png in Resources */,
 				FFF81CE8185504CA009658C1 /* ic_app@152.png in Resources */,
@@ -616,6 +623,7 @@
 				FF1136E81847290A001CADA6 /* ic_person.png in Resources */,
 				FF1136F91847296E001CADA6 /* ic_pin_coffee.png in Resources */,
 				FF11373418479D23001CADA6 /* ic_sub_hotel.png in Resources */,
+				FFD4134718639D9A006E3FF8 /* btn_up.png in Resources */,
 				FF1136E61847290A001CADA6 /* ic_launcher.png in Resources */,
 				FF11373918479D23001CADA6 /* ic_sub_toilet.png in Resources */,
 				FF4CD181184CDD95000B297D /* ic_news2.png in Resources */,
@@ -809,7 +817,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Warakorn Chanprasopchai (TX6S3QV648)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/warakorn9z/Documents/workspace_ios/iKKU,
@@ -818,7 +826,7 @@
 				GCC_PREFIX_HEADER = "iKKU/iKKU-Prefix.pch";
 				INFOPLIST_FILE = "iKKU/iKKU-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "04DB5D4C-BB25-476A-9745-32ECA342D49D";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -829,7 +837,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Warakorn Chanprasopchai (TX6S3QV648)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/warakorn9z/Documents/workspace_ios/iKKU,
@@ -838,7 +846,7 @@
 				GCC_PREFIX_HEADER = "iKKU/iKKU-Prefix.pch";
 				INFOPLIST_FILE = "iKKU/iKKU-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "04DB5D4C-BB25-476A-9745-32ECA342D49D";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

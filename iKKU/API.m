@@ -33,7 +33,7 @@ static BOOL isShowMSGDialog;
 - (void)getNews
 {
     
-    [API showLoading];
+//    [API showLoading];
     
     NSDictionary *params = @{
                              @"limit" : NEWS_MAX_RESULT
@@ -57,7 +57,7 @@ static BOOL isShowMSGDialog;
 - (void)getEvent
 {
     
-    [API showLoading];
+//    [API showLoading];
     
     NSDictionary *params = @{
                              @"limit" : NEWS_MAX_RESULT
@@ -126,7 +126,7 @@ static BOOL isShowMSGDialog;
 
 - (void)getYoutubeList
 {
-    [API showLoading];
+//    [API showLoading];
     
     NSDictionary *params = @{
                              @"part" : @"snippet",

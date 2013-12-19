@@ -10,6 +10,7 @@
 #import "API.h"
 #import "Effect.h"
 #import "EventCell.h"
+#import "ChannelViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "GTMNSString+HTML.h"
 
@@ -24,6 +25,7 @@
     API *api;
     NSArray *DATA;
     BOOL isShowDetail;
+    UIRefreshControl *refresh;
 }
 
 - (void)viewDidLoad
@@ -35,7 +37,14 @@
     
     api = [API new];
     [api setDelegate:self];
+    [API showLoading];
     [api getEvent];
+    
+    refresh = [UIRefreshControl new];
+    [refresh addTarget:self action:@selector(onRefresh) forControlEvents:UIControlEventValueChanged];
+    UITableViewController *tvc = [UITableViewController new];
+    [tvc setTableView:_tableViewEvent];
+    [tvc setRefreshControl:refresh];
     
     [_tableViewEvent setDataSource:self];
     [_tableViewEvent setDelegate:self];
@@ -53,16 +62,81 @@
     [_scrollViewEvent setHidden:YES];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    for (UIViewController *vc in self.tabBarController.childViewControllers) {
+        if ([vc isKindOfClass:[ChannelViewController new].class]) {
+            [(ChannelViewController *)vc stopVideo];
+        }
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (void)onRefresh
+{
+    [api getEvent];
+}
+
+- (NSString *)parseDate:(NSString *)date
+{
+    NSArray *split = [date componentsSeparatedByString:@"-"];
+    NSInteger m = [[split objectAtIndex:1] integerValue];
+    NSString *month;
+    
+    if (m == 1) {
+        month = @"ม.ค.";
+    } else if (m == 2) {
+        month = @"ก.พ.";
+    } else if (m == 3) {
+        month = @"มี.ค.";
+    } else if (m == 4) {
+        month = @"เม.ย.";
+    } else if (m == 5) {
+        month = @"พ.ค.";
+    } else if (m == 6) {
+        month = @"มิ.ย.";
+    } else if (m == 7) {
+        month = @"ก.ค.";
+    } else if (m == 8) {
+        month = @"ส.ค.";
+    } else if (m == 9) {
+        month = @"ก.ย.";
+    } else if (m == 10) {
+        month = @"ต.ค.";
+    } else if (m == 11) {
+        month = @"พ.ย.";
+    } else if (m == 12) {
+        month = @"ธ.ค.";
+    }
+    
+    return [NSString stringWithFormat:@"%@ %@ %@", split[2], month, split[0]];
+}
+
+- (NSString *)parseTime:(NSString *)time
+{
+    NSArray *split = [time componentsSeparatedByString:@" "];
+//    NSArray *split2 = [split[1] componentsSeparatedByString:@"."];
+//    NSInteger h = [split2[0] integerValue];
+//    NSInteger m = [split2[1] integerValue];
+//    if ([split[0] isEqualToString:@"PM."]) {
+//        
+//    }
+    
+    return split[1];
+}
+
 # pragma mark - API Delegate
 - (void)getEventCompleted:(NSObject *)result
 {
     DATA = [result valueForKey:@"activities"];
+    [refresh endRefreshing];
     [_tableViewEvent reloadData];
 }
 
@@ -95,7 +169,7 @@
     detail = [detail gtm_stringByUnescapingFromHTML];
     [_webViewDetail loadHTMLString:detail baseURL:nil];
     
-    NSString *when = [NSString stringWithFormat:@"(%@ %@) - (%@ %@)", [dict valueForKey:@"dateSt"], [dict valueForKey:@"timeSt"], [dict valueForKey:@"dateEd"], [dict valueForKey:@"timeEd"]];
+    NSString *when = [NSString stringWithFormat:@"%@ %@ - %@ %@", [self parseDate:[dict valueForKey:@"dateSt"]], [self parseTime:[dict valueForKey:@"timeSt"]], [self parseDate:[dict valueForKey:@"dateEd"]], [self parseTime:[dict valueForKey:@"timeEd"]]];
     [_labelWhen setText:when];
     [_labelWhere setText:[dict valueForKey:@"place"]];
     [_labelAudience setText:[dict valueForKey:@"audience"]];
@@ -136,10 +210,10 @@
         isShowDetail = NO;
     }];
 }
-- (IBAction)onClickRefresh:(UIButton *)sender
-{
-    [self viewDidLoad];
-}
+//- (IBAction)onClickRefresh:(UIButton *)sender
+//{
+//    [self viewDidLoad];
+//}
 - (IBAction)onClickLink:(UIButton *)sender
 {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[[[sender titleLabel] text] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]]];

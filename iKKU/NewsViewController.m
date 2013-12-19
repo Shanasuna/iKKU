@@ -10,6 +10,7 @@
 #import "API.h"
 #import "Effect.h"
 #import "NewsCell.h"
+#import "ChannelViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "GTMNSString+HTML.h"
 
@@ -24,6 +25,7 @@
     API *api;
     BOOL isShowDetail;
     NSArray *DATA;
+    UIRefreshControl *refresh;
 }
 
 - (void)viewDidLoad
@@ -44,7 +46,14 @@
     
     api = [API new];
     [api setDelegate:self];
+    [API showLoading];
     [api getNews];
+    
+    refresh = [UIRefreshControl new];
+    [refresh addTarget:self action:@selector(onRefresh) forControlEvents:UIControlEventValueChanged];
+    UITableViewController *tvc = [UITableViewController new];
+    [tvc setTableView:_tableViewNews];
+    [tvc setRefreshControl:refresh];
     
     [_tableViewNews setDataSource:self];
     [_tableViewNews setDelegate:self];
@@ -56,10 +65,27 @@
     [_btnBack setHidden:YES];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    for (UIViewController *vc in self.tabBarController.childViewControllers) {
+        if ([vc isKindOfClass:[ChannelViewController new].class]) {
+            [(ChannelViewController *)vc stopVideo];
+        }
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)onRefresh
+{
+    NSLog(@"refresh");
+    [api getNews];
 }
 
 # pragma mark - TableView DataSource & Delegate
@@ -114,10 +140,11 @@
     }
 }
 
-# pragma mark - APIDelaget
+# pragma mark - APIDelegate
 - (void)getNewsCompleted:(NSObject *)result
 {
     DATA = [result valueForKey:@"news"];
+    [refresh endRefreshing];
     [_tableViewNews reloadData];
 }
 
@@ -132,9 +159,9 @@
         isShowDetail = NO;
     }];
 }
-- (IBAction)onClickRefresh:(UIButton *)sender
-{
-    [self viewDidLoad];
-}
+//- (IBAction)onClickRefresh:(UIButton *)sender
+//{
+//    [self viewDidLoad];
+//}
 
 @end

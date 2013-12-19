@@ -8,6 +8,8 @@
 
 #import "PlaceViewController.h"
 #import "API.h"
+#import "Effect.h"
+#import "ChannelViewController.h"
 
 #define TYPE_FOOD 1
 #define TYPE_COFFEE 2
@@ -28,7 +30,7 @@
     API *api;
     NSArray *DATA;
     NSInteger TYPE;
-    UIImage *pinMe, *pinFood, *pinCoffee, *pinMeeting, *pinLibrary, *pinHotel, *pinATM, *pinParking, *pinToilet, *pinBus;
+    UIImage *btnDown, *btnUp, *pinMe, *pinFood, *pinCoffee, *pinMeeting, *pinLibrary, *pinHotel, *pinATM, *pinParking, *pinToilet, *pinBus;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -53,6 +55,8 @@
     [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     [_locationManager startUpdatingLocation];
     
+    btnUp = [UIImage imageNamed:@"btn_up"];
+    btnDown = [UIImage imageNamed:@"btn_down"];
     pinMe = [UIImage imageNamed:@"ic_pin_me.png"];
     pinFood = [UIImage imageNamed:@"ic_pin_restaurant.png"];
     pinCoffee = [UIImage imageNamed:@"ic_pin_coffee.png"];
@@ -64,6 +68,7 @@
     pinToilet = [UIImage imageNamed:@"ic_pin_toilet.png"];
     pinBus = [UIImage imageNamed:@"ic_pin_bus.png"];
     
+    [_btnToggleViewExpand setTag:0];
     [_btnFood setTag:TYPE_FOOD];
     [_btnCoffee setTag:TYPE_COFFEE];
     [_btnMeeting setTag:TYPE_MEETING];
@@ -84,12 +89,14 @@
     [_btnToilet addTarget:self action:@selector(onClickType:) forControlEvents:UIControlEventTouchUpInside];
     [_btnBus addTarget:self action:@selector(onClickType:) forControlEvents:UIControlEventTouchUpInside];
     
-    _gmsMap = [[GMSMapView alloc] initWithFrame:_viewMapZone.frame];
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:[[_locationManager location] coordinate] zoom:14];
+    _gmsMap = [[GMSMapView alloc] initWithFrame:CGRectMake(0, 0, _viewMapZone.frame.size.width, _viewMapZone.frame.size.height)];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:CLLocationCoordinate2DMake(16.472402, 102.82551) zoom:14];
+//    GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:[[_locationManager location] coordinate] zoom:14];
     [_gmsMap setCamera:camera];
     [_gmsMap setMyLocationEnabled:YES];
     [_gmsMap setMapType:kGMSTypeHybrid];
-    [self.view addSubview:_gmsMap];
+//    [self.view insertSubview:_gmsMap belowSubview:_viewExpandBTN];
+    [_viewMapZone addSubview:_gmsMap];
     
     GMSMarker *marker = [[GMSMarker alloc] init];
 //    [marker setPosition:CLLocationCoordinate2DMake(16.472402, 102.82551)];
@@ -97,6 +104,17 @@
     [marker setTitle:@"Current Location"];
     [marker setIcon:pinMe];
     [marker setMap:_gmsMap];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    for (UIViewController *vc in self.tabBarController.childViewControllers) {
+        if ([vc isKindOfClass:[ChannelViewController new].class]) {
+            [(ChannelViewController *)vc stopVideo];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -110,8 +128,20 @@
     TYPE = [sender tag];
     [api getLocationWithType:TYPE];
 }
-- (IBAction)onClickRefresh:(UIButton *)sender {
-    [self viewDidLoad];
+//- (IBAction)onClickRefresh:(UIButton *)sender {
+//    [self viewDidLoad];
+//}
+- (IBAction)onClickToggleExpand:(UIButton *)sender
+{
+    if ([sender tag] == 0) {
+        [_btnToggleViewExpand setImage:btnUp forState:UIControlStateNormal];
+        [Effect slideDown:_viewExpandBTN point:_viewExpandBTN.frame.size.height duration:0.5];
+        [_btnToggleViewExpand setTag:1];
+    } else if ([sender tag] == 1) {
+        [_btnToggleViewExpand setImage:btnDown forState:UIControlStateNormal];
+        [Effect slideUp:_viewExpandBTN point:_viewExpandBTN.frame.size.height duration:0.5];
+        [_btnToggleViewExpand setTag:0];
+    }
 }
 
 - (void)getLocationWithTypeCompleted:(NSObject *)result {

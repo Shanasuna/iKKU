@@ -21,6 +21,7 @@
 @implementation ChannelViewController
 {
     API *api;
+    UIRefreshControl *refresh;
     NSArray *DATA;
 }
 
@@ -38,13 +39,9 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-//    [_webViewChannel setScalesPageToFit:YES];
-//    
-//    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:URL]];
-//    [_webViewChannel loadRequest:request];
-    
     api = [API new];
     [api setDelegate:self];
+    [API showLoading];
     [api getYoutubeList];
     
     [_tableViewYoutube setDataSource:self];
@@ -53,12 +50,16 @@
     [_tableViewYoutube setHidden:NO];
     [_webViewChannel setHidden:YES];
     [_btnBack setHidden:YES];
+    
+    refresh = [UIRefreshControl new];
+    [refresh addTarget:self action:@selector(onRefresh) forControlEvents:UIControlEventValueChanged];
+    UITableViewController *tvc = [UITableViewController new];
+    [tvc setTableView:_tableViewYoutube];
+    [tvc setRefreshControl:refresh];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+- (void)stopVideo
 {
-    [super viewWillDisappear:animated];
-    
     [self onClickBack:nil];
 }
 
@@ -66,6 +67,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)onRefresh
+{
+    [api getYoutubeList];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -89,7 +95,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Clicked");
     NSDictionary *dict = DATA[indexPath.row];
     
     NSString *embedHTML = @"<html><head>\
@@ -102,8 +107,6 @@
     NSString *videoID = [[dict valueForKey:@"id"] valueForKey:@"videoId"];
     NSString* html = [NSString stringWithFormat:embedHTML, _webViewChannel.frame.size.width, _webViewChannel.frame.size.height, videoID];
     
-    NSLog(@"html: %@", html);
-    
     [_tableViewYoutube setHidden:YES];
     [_webViewChannel setHidden:NO];
     [_webViewChannel setAllowsInlineMediaPlayback:YES];
@@ -114,6 +117,7 @@
 - (void)getYoutubeListCompleted:(NSObject *)result
 {
     DATA = [result valueForKey:@"items"];
+    [refresh endRefreshing];
     [_tableViewYoutube reloadData];
 }
 
@@ -125,8 +129,8 @@
     [_tableViewYoutube setHidden:NO];
 }
 
-- (IBAction)onClickRefresh:(UIButton *)sender {
-    [self viewDidLoad];
-}
+//- (IBAction)onClickRefresh:(UIButton *)sender {
+//    [self viewDidLoad];
+//}
 
 @end

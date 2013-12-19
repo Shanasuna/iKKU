@@ -14,4 +14,6 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableViewYoutube;
 @property (strong, nonatomic) IBOutlet UIButton *btnBack;
 
+- (void)stopVideo;
+
 @end

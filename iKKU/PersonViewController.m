@@ -9,6 +9,7 @@
 #import "PersonViewController.h"
 #import "API.h"
 #import "PersonCell.h"
+#import "ChannelViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import <MessageUI/MFMailComposeViewController.h>
 
@@ -68,6 +69,17 @@
     
     [_textFieldKeyword setText:@""];
     [_tableViewPerson reloadData];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    for (UIViewController *vc in self.tabBarController.childViewControllers) {
+        if ([vc isKindOfClass:[ChannelViewController new].class]) {
+            [(ChannelViewController *)vc stopVideo];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning

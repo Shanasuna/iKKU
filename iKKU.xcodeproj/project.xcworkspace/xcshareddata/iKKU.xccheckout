@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C7C80A16-E467-406B-871A-11CEE33FAD55</string>
+	<key>IDESourceControlProjectName</key>
+	<string>iKKU</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>61A15FA8-6160-4583-84E2-2E49AD11963E</key>
+		<string>https://github.com/Puny9z/iKKU.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>iKKU.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>61A15FA8-6160-4583-84E2-2E49AD11963E</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Puny9z/iKKU.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>61A15FA8-6160-4583-84E2-2E49AD11963E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>61A15FA8-6160-4583-84E2-2E49AD11963E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iKKU</string>
+		</dict>
+	</array>
+</dict>
+</plist>

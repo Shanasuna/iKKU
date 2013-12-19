@@ -20,7 +20,7 @@
     [GMSServices provideAPIKey:@"AIzaSyD8E7t8rJvotjVzI3rcpnEog-t3BXlbBto"];
     
     NSString *model = [UIDevice currentDevice].model;
-    if (([model isEqualToString:@"iPhone Simulator"] || [model isEqualToString:@"iPod touch"]) && !isiPhone5) {
+    if (([model isEqualToString:@"iPhone"] || [model isEqualToString:@"iPod touch"]) && !isiPhone5) {
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main_iPhone_Old" bundle:nil];
         UIViewController *initViewController = [storyBoard instantiateInitialViewController];
         [self.window setRootViewController:initViewController];
