@@ -30,8 +30,8 @@
 //@property (strong, nonatomic) id mainDelegate;
 
 // Delegete Function
-- (void)getNews;
-- (void)getEvent;
+- (void)getNewsWithLimit:(NSInteger)limit;
+- (void)getEventWithLimit:(NSInteger)limit;
 - (void)getLocationWithType:(NSInteger)type;
 - (void)searchPersonWith:(NSString *)type
                  keyword:(NSString *)keyword;

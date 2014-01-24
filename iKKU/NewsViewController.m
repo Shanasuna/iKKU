@@ -10,11 +10,16 @@
 #import "API.h"
 #import "Effect.h"
 #import "NewsCell.h"
-#import "ChannelViewController.h"
+#import "YouTubePlayerViewController.h"
+#import "NewsDetailViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "GTMNSString+HTML.h"
 
 #define URL @"http://www.kku.ac.th/ikku_apps/ios/news-list.html#/"
+
+#define DEFAULT_NEWS_NUMBER 10
+#define ROW_HEIGHT 90
+#define ROW_MORE_HEIGHT 50
 
 @interface NewsViewController () <APIDelegate, UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -26,6 +31,7 @@
     BOOL isShowDetail;
     NSArray *DATA;
     UIRefreshControl *refresh;
+    NSInteger newsLimit;
 }
 
 - (void)viewDidLoad
@@ -42,12 +48,14 @@
 //    [_webViewNews loadRequest:request];
 //    [API showLoading];
     
+    
     isShowDetail = NO;
+    newsLimit = DEFAULT_NEWS_NUMBER;
     
     api = [API new];
     [api setDelegate:self];
     [API showLoading];
-    [api getNews];
+    [api getNewsWithLimit:newsLimit];
     
     refresh = [UIRefreshControl new];
     [refresh addTarget:self action:@selector(onRefresh) forControlEvents:UIControlEventValueChanged];
@@ -62,7 +70,6 @@
     
     [_tableViewNews setHidden:NO];
     [_scrollViewDetail setHidden:YES];
-    [_btnBack setHidden:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -70,8 +77,8 @@
     [super viewWillAppear:animated];
     
     for (UIViewController *vc in self.tabBarController.childViewControllers) {
-        if ([vc isKindOfClass:[ChannelViewController new].class]) {
-            [(ChannelViewController *)vc stopVideo];
+        if ([vc isKindOfClass:[YouTubePlayerViewController new].class]) {
+            [(YouTubePlayerViewController *)vc stopVideo];
         }
     }
 }
@@ -84,44 +91,58 @@
 
 - (void)onRefresh
 {
-    NSLog(@"refresh");
-    [api getNews];
+    newsLimit = DEFAULT_NEWS_NUMBER;
+    [api getNewsWithLimit:newsLimit];
 }
 
 # pragma mark - TableView DataSource & Delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [DATA count];
+    return  [DATA count] + 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row != [DATA count]) {
+        return ROW_HEIGHT;
+    } else {
+        return ROW_MORE_HEIGHT;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NewsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewsCell" forIndexPath:indexPath];
-    
-    NSDictionary *dict = DATA[indexPath.row];
-    
-    [cell configCell:dict];
-    
-    return cell;
+    if (indexPath.row != [DATA count]) {
+        NewsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewsCell" forIndexPath:indexPath];
+        
+        NSDictionary *dict = DATA[indexPath.row];
+        
+        [cell configCell:dict];
+        
+        return cell;
+    } else {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoreBTN" forIndexPath:indexPath];
+        
+        return cell;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *dict = DATA[indexPath.row];
-    
-    [_imageViewNews setImageWithURL:[NSURL URLWithString:[[dict valueForKey:@"picnewsUrl"] objectAtIndex:0]]];
-    [_labelDate setText:[dict valueForKey:@"date"]];
-    [_labelTitle setText:[dict valueForKey:@"title"]];
-    
-    NSString *detail = [NSString stringWithFormat:@"<html><body>%@</body></html>", [dict valueForKey:@"detail"]];
-    detail = [detail gtm_stringByUnescapingFromHTML];
-    [_webViewDetail loadHTMLString:detail baseURL:nil];
-    
-    [_scrollViewDetail setHidden:NO];
-    
-    [Effect slideRightToLeft:_scrollViewDetail duration:0.3 delay:0 completion:^(BOOL finished) {
-        [_btnBack setHidden:NO];
-    }];
+    if (indexPath.row != [DATA count]) {
+        NSDictionary *dict = DATA[indexPath.row];
+        [self performSegueWithIdentifier:@"NewsDetail" sender:dict];
+    } else {
+        newsLimit += 10;
+        [api getNewsWithLimit:newsLimit];
+    }
+}
+
+# pragma mark - Segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NewsDetailViewController *dest = [segue destinationViewController];
+    [dest setNews:sender];
 }
 
 # pragma mark - WebViewDelegate
@@ -147,21 +168,5 @@
     [refresh endRefreshing];
     [_tableViewNews reloadData];
 }
-
-# pragma mark - onClick
-- (IBAction)onClickBack:(UIButton *)sender
-{
-    [_btnBack setHidden:YES];
-    CGRect frame = [_scrollViewDetail frame];
-    [Effect slideLeftToRight:_scrollViewDetail duration:0.3 delay:0 completion:^(BOOL finished) {
-        [_scrollViewDetail setHidden:YES];
-        [_scrollViewDetail setFrame:frame];
-        isShowDetail = NO;
-    }];
-}
-//- (IBAction)onClickRefresh:(UIButton *)sender
-//{
-//    [self viewDidLoad];
-//}
 
 @end

@@ -10,7 +10,6 @@
 
 @interface NewsViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UIButton *btnBack;
 @property (strong, nonatomic) IBOutlet UITableView *tableViewNews;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollViewDetail;
 @property (strong, nonatomic) IBOutlet UIImageView *imageViewNews;

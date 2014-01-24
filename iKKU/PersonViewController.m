@@ -9,7 +9,7 @@
 #import "PersonViewController.h"
 #import "API.h"
 #import "PersonCell.h"
-#import "ChannelViewController.h"
+#import "YouTubePlayerViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import <MessageUI/MFMailComposeViewController.h>
 
@@ -76,8 +76,8 @@
     [super viewWillAppear:animated];
     
     for (UIViewController *vc in self.tabBarController.childViewControllers) {
-        if ([vc isKindOfClass:[ChannelViewController new].class]) {
-            [(ChannelViewController *)vc stopVideo];
+        if ([vc isKindOfClass:[YouTubePlayerViewController new].class]) {
+            [(YouTubePlayerViewController *)vc stopVideo];
         }
     }
 }

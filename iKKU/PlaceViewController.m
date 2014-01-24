@@ -9,7 +9,7 @@
 #import "PlaceViewController.h"
 #import "API.h"
 #import "Effect.h"
-#import "ChannelViewController.h"
+#import "YouTubePlayerViewController.h"
 
 #define TYPE_FOOD 1
 #define TYPE_COFFEE 2
@@ -58,7 +58,7 @@
     btnUp = [UIImage imageNamed:@"btn_up"];
     btnDown = [UIImage imageNamed:@"btn_down"];
     pinMe = [UIImage imageNamed:@"ic_pin_me.png"];
-    pinFood = [UIImage imageNamed:@"ic_pin_restaurant.png"];
+    pinFood = [UIImage imageNamed:@"ic_pin_restuarant.png"];
     pinCoffee = [UIImage imageNamed:@"ic_pin_coffee.png"];
     pinMeeting = [UIImage imageNamed:@"ic_pin_meeting.png"];
     pinLibrary = [UIImage imageNamed:@"ic_pin_library.png"];
@@ -111,8 +111,8 @@
     [super viewWillAppear:animated];
     
     for (UIViewController *vc in self.tabBarController.childViewControllers) {
-        if ([vc isKindOfClass:[ChannelViewController new].class]) {
-            [(ChannelViewController *)vc stopVideo];
+        if ([vc isKindOfClass:[YouTubePlayerViewController new].class]) {
+            [(YouTubePlayerViewController *)vc stopVideo];
         }
     }
 }

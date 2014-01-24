@@ -30,13 +30,13 @@ static BOOL isShowMSGDialog;
 @implementation API
 
 // Delegate Function
-- (void)getNews
+- (void)getNewsWithLimit:(NSInteger)limit
 {
     
 //    [API showLoading];
     
     NSDictionary *params = @{
-                             @"limit" : NEWS_MAX_RESULT
+                             @"limit" : [NSString stringWithFormat:@"%li", (long)limit]
                              };
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -54,13 +54,13 @@ static BOOL isShowMSGDialog;
     }];
 }
 
-- (void)getEvent
+- (void)getEventWithLimit:(NSInteger)limit
 {
     
 //    [API showLoading];
     
     NSDictionary *params = @{
-                             @"limit" : NEWS_MAX_RESULT
+                             @"limit" : [NSString stringWithFormat:@"%li", (long)limit]
                              };
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
