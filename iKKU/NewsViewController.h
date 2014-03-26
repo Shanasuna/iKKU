@@ -10,11 +10,6 @@
 
 @interface NewsViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UITableView *tableViewNews;
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollViewDetail;
-@property (strong, nonatomic) IBOutlet UIImageView *imageViewNews;
-@property (strong, nonatomic) IBOutlet UILabel *labelDate;
-@property (strong, nonatomic) IBOutlet UILabel *labelTitle;
-@property (strong, nonatomic) IBOutlet UIWebView *webViewDetail;
+@property (weak, nonatomic) IBOutlet UITableView *tableViewNews;
 
 @end

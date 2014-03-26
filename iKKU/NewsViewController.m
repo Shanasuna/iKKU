@@ -48,13 +48,12 @@
 //    [_webViewNews loadRequest:request];
 //    [API showLoading];
     
-    
     isShowDetail = NO;
     newsLimit = DEFAULT_NEWS_NUMBER;
     
     api = [API new];
     [api setDelegate:self];
-    [API showLoading];
+//    [API showLoading];
     [api getNewsWithLimit:newsLimit];
     
     refresh = [UIRefreshControl new];
@@ -66,10 +65,7 @@
     [_tableViewNews setDataSource:self];
     [_tableViewNews setDelegate:self];
     
-    [_webViewDetail setDelegate:self];
-    
     [_tableViewNews setHidden:NO];
-    [_scrollViewDetail setHidden:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -87,6 +83,8 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
+    NSLog(@"News Memory Warning");
 }
 
 - (void)onRefresh

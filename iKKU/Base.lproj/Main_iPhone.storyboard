@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--News View Controller - News-->
@@ -75,7 +75,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="NEWS" image="tab_news" id="u1e-5L-l1D"/>
-                    <navigationItem key="navigationItem" title="News" id="npM-cf-huV"/>
+                    <navigationItem key="navigationItem" id="npM-cf-huV"/>
                     <connections>
                         <outlet property="tableViewNews" destination="Fqe-Bt-UNt" id="X2Y-WK-HOb"/>
                         <segue destination="qJt-oF-cHJ" kind="push" identifier="NewsDetail" id="tfA-SA-0lV"/>
@@ -85,7 +85,7 @@
             </objects>
             <point key="canvasLocation" x="1596" y="-225"/>
         </scene>
-        <!--News Detail View Controller - News-->
+        <!--News Detail View Controller-->
         <scene sceneID="KNT-sv-E9u">
             <objects>
                 <viewController storyboardIdentifier="NewsDetail" id="qJt-oF-cHJ" customClass="NewsDetailViewController" sceneMemberID="viewController">
@@ -130,7 +130,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="News" id="O2d-n0-bRa">
+                    <navigationItem key="navigationItem" id="O2d-n0-bRa">
                         <barButtonItem key="backBarButtonItem" title="Back" id="s92-mj-0bI"/>
                     </navigationItem>
                     <connections>
@@ -152,8 +152,10 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BTQ-6p-s9s">
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.64705882349999999" green="0.23137254900000001" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.77647058820000003" green="0.38823529410000002" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -171,8 +173,10 @@
                     <tabBarItem key="tabBarItem" title="EVENT" image="tab_event" id="hSY-AO-1r7"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ne3-Ou-PS4">
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.64705882349999999" green="0.23137254900000001" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.82745098039999998" green="0.4823529412" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -260,7 +264,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Event" id="QHf-Ev-8jA"/>
+                    <navigationItem key="navigationItem" id="QHf-Ev-8jA"/>
                     <connections>
                         <outlet property="tableViewEvent" destination="bWO-P4-oHr" id="Ubp-kx-9DI"/>
                         <segue destination="Flf-38-ZQY" kind="push" identifier="EventDetail" id="qoq-07-0qK"/>
@@ -270,7 +274,7 @@
             </objects>
             <point key="canvasLocation" x="1195" y="490"/>
         </scene>
-        <!--Event Detail View Controller - Event-->
+        <!--Event Detail View Controller-->
         <scene sceneID="ZcN-DF-njh">
             <objects>
                 <viewController id="Flf-38-ZQY" customClass="EventDetailViewController" sceneMemberID="viewController">
@@ -290,7 +294,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Event" id="eEa-IY-dgH"/>
+                    <navigationItem key="navigationItem" id="eEa-IY-dgH"/>
                     <connections>
                         <outlet property="btnLink" destination="r6V-6I-ll7" id="VSR-r2-IKz"/>
                         <outlet property="imageViewEvent" destination="Kaq-eR-FL0" id="54p-oM-7bI"/>
@@ -462,8 +466,10 @@
                     <tabBarItem key="tabBarItem" title="PLACE" image="tab_place" id="Db4-SR-AbR"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="E73-ED-1a5">
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.64705882349999999" green="0.23137254900000001" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.82745098039999998" green="0.4823529412" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -498,35 +504,35 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OLZ-q8-2Ky">
                                         <rect key="frame" x="15" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" backgroundImage="Meeting.png">
+                                        <state key="normal" backgroundImage="Meeting">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRw-Ah-WnE">
                                         <rect key="frame" x="75" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" backgroundImage="ATM.png">
+                                        <state key="normal" backgroundImage="ATM">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lYY-8h-YbQ">
                                         <rect key="frame" x="135" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" backgroundImage="Parking.png">
+                                        <state key="normal" backgroundImage="Parking">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZi-fP-kNM">
                                         <rect key="frame" x="195" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" backgroundImage="Shuttlebus.png">
+                                        <state key="normal" backgroundImage="Shuttlebus">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTA-Y2-ybu">
                                         <rect key="frame" x="255" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" backgroundImage="Hotel.png">
+                                        <state key="normal" backgroundImage="Hotel">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
@@ -540,28 +546,28 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Do-Q2-UZe">
                                         <rect key="frame" x="15" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" backgroundImage="Restaurant.png">
+                                        <state key="normal" backgroundImage="Restaurant">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfw-wy-oyB">
                                         <rect key="frame" x="75" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" backgroundImage="Cofee2.png">
+                                        <state key="normal" backgroundImage="Coffee">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7j0-sQ-uOY">
                                         <rect key="frame" x="135" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" backgroundImage="Toilet.png">
+                                        <state key="normal" backgroundImage="Toilet">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOb-gd-lJD">
                                         <rect key="frame" x="195" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" backgroundImage="Libary.png">
+                                        <state key="normal" backgroundImage="Library">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
@@ -581,7 +587,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Place" id="nAD-bu-vOy"/>
+                    <navigationItem key="navigationItem" id="nAD-bu-vOy"/>
                     <connections>
                         <outlet property="btnATM" destination="YRw-Ah-WnE" id="ujL-EF-QUK"/>
                         <outlet property="btnBus" destination="PZi-fP-kNM" id="7TP-0H-geT"/>
@@ -608,8 +614,10 @@
                     <tabBarItem key="tabBarItem" title="PERSON" image="tab_person" id="gtG-hs-Yxh"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="R4c-pN-icm">
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.64705882349999999" green="0.23137254900000001" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.82745098039999998" green="0.4823529412" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -652,7 +660,7 @@
                                         <rect key="frame" x="270" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                                        <state key="normal" image="Search.png">
+                                        <state key="normal" image="Search">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -736,7 +744,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Person" id="tlK-qJ-vCr"/>
+                    <navigationItem key="navigationItem" id="tlK-qJ-vCr"/>
                     <connections>
                         <outlet property="labelNotFound" destination="Q7F-zA-yOK" id="pbB-Wb-ipN"/>
                         <outlet property="picker" destination="zgC-jb-Zgo" id="dSx-6m-mtn"/>
@@ -756,8 +764,10 @@
                     <tabBarItem key="tabBarItem" title="CHANNEL" image="tab_channel" id="yLj-4W-6ba"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZIG-Zp-0SV">
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.64705882349999999" green="0.23137254900000001" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.82745098039999998" green="0.4823529412" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -795,6 +805,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pch-c8-ven">
                                                     <rect key="frame" x="5" y="5" width="80" height="80"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUg-qW-xqC">
                                                     <rect key="frame" x="93" y="10" width="222" height="21"/>
@@ -828,7 +839,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Channel" id="zrY-zp-FIC"/>
+                    <navigationItem key="navigationItem" id="zrY-zp-FIC"/>
                     <connections>
                         <outlet property="tableViewYoutube" destination="pWu-ml-v9Y" id="WnP-94-nZP"/>
                         <segue destination="Rbp-mb-C8a" kind="push" identifier="YouTubePlayer" id="25m-eM-kaM"/>
@@ -850,8 +861,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PtP-7M-OtA">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PtP-7M-OtA">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
@@ -867,17 +878,17 @@
             </objects>
             <point key="canvasLocation" x="1668" y="2514"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="Vex-rW-GRa">
             <objects>
-                <tabBarController id="8YX-ce-x5E" sceneMemberID="viewController">
+                <tabBarController id="8YX-ce-x5E" customClass="TabBarViewController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="JQR-rB-NYL">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" red="0.82745098039999998" green="0.4823529412" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="selectedImageTintColor" red="0.82745098039999998" green="0.4823529412" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.64705882349999999" green="0.23137254900000001" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="0.64705882349999999" green="0.23137254900000001" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="a7n-m8-Uiq" kind="relationship" relationship="viewControllers" id="cpJ-fw-siX"/>
@@ -893,16 +904,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ATM.png" width="1600" height="1600"/>
-        <image name="Cofee2.png" width="1600" height="1600"/>
-        <image name="Hotel.png" width="1600" height="1600"/>
-        <image name="Libary.png" width="1600" height="1600"/>
-        <image name="Meeting.png" width="1600" height="1600"/>
-        <image name="Parking.png" width="1600" height="1600"/>
-        <image name="Restaurant.png" width="1600" height="1600"/>
-        <image name="Search.png" width="1600" height="1600"/>
-        <image name="Shuttlebus.png" width="1600" height="1600"/>
-        <image name="Toilet.png" width="1600" height="1600"/>
+        <image name="ATM" width="50" height="50"/>
+        <image name="Coffee" width="50" height="50"/>
+        <image name="Hotel" width="50" height="50"/>
+        <image name="Library" width="50" height="50"/>
+        <image name="Meeting" width="50" height="50"/>
+        <image name="Parking" width="50" height="50"/>
+        <image name="Restaurant" width="50" height="50"/>
+        <image name="Search" width="50" height="50"/>
+        <image name="Shuttlebus" width="50" height="50"/>
+        <image name="Toilet" width="50" height="50"/>
         <image name="btn_down.png" width="44" height="44"/>
         <image name="tab_channel" width="32" height="32"/>
         <image name="tab_event" width="32" height="32"/>

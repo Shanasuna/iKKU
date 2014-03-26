@@ -9,6 +9,8 @@
 #import "NewsCell.h"
 #import "UIImageView+AFNetworking.h"
 
+#define URL_RESIZE_IMG @"https://www.kku.ac.th/ikku/api/images/image.php?width=150&height=150&image="
+
 @implementation NewsCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -29,7 +31,8 @@
 
 - (void)configCell:(NSDictionary *)dict
 {
-    [_imageViewNews setImageWithURL:[NSURL URLWithString:[dict valueForKey:@"pictitle"]]];
+    [_imageViewNews setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", URL_RESIZE_IMG, [dict valueForKey:@"pictitle"]]]];
+//    NSLog(@"URL: %@", [NSString stringWithFormat:@"%@%@", URL_RESIZE_IMG, [dict valueForKey:@"pictitle"]]);
     [_labelTitle setText:[dict valueForKey:@"title"]];
 }
 

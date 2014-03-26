@@ -13,7 +13,10 @@
 #import <MediaPlayer/MPMoviePlayerController.h>
 #import "YouTubePlayerViewController.h"
 
-#define URL @"http://202.12.97.4/kkuchannel/intranet-iphone.php"
+#define LIVE_URL @"http://www.kku.ac.th/kkuchannel/internet-iphone.php"
+#define LIVE_PIC_URL @"http://www.kku.ac.th/kkuchannel/internet-iphone.php"
+#define LIVE_TITLE @"Live Channel"
+#define LIVE_DESCRIPTION @"KKU Live Channel"
 
 @interface ChannelViewController () <APIDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -23,7 +26,7 @@
 {
     API *api;
     UIRefreshControl *refresh;
-    NSArray *DATA;
+    NSMutableArray *DATA;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -59,6 +62,8 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
+    NSLog(@"Channel Memory Warning");
 }
 
 # pragma mark - Segue
@@ -100,7 +105,18 @@
 
 - (void)getYoutubeListCompleted:(NSObject *)result
 {
-    DATA = [result valueForKey:@"items"];
+    DATA = [NSMutableArray arrayWithArray:[result valueForKey:@"items"]];
+    
+    NSDictionary *live = @{
+                           @"snippet" : @{
+                                            @"thumbnails" : @{ @"default" : @{ @"url": LIVE_PIC_URL } },
+                                            @"title" : LIVE_TITLE,
+                                            @"description" : LIVE_DESCRIPTION
+                                            },
+                           @"kku_live" : LIVE_URL
+                           };
+    [DATA insertObject:live atIndex:0];
+    
     [refresh endRefreshing];
     [_tableViewYoutube reloadData];
 }

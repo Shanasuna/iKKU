@@ -10,7 +10,7 @@
 
 @interface YouTubePlayerViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UIWebView *webViewChannel;
+@property (weak, nonatomic) IBOutlet UIWebView *webViewChannel;
 
 @property (strong, nonatomic) NSDictionary *YouTubeURL;
 

@@ -30,9 +30,9 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [self.navigationItem setTitle:[_News valueForKey:@"title"]];
+//    [self.navigationItem setTitle:[_News valueForKey:@"title"]];
     
-    [_imgNewsPic setImageWithURL:[NSURL URLWithString:[[_News valueForKey:@"picnewsUrl"] objectAtIndex:0]]];
+    [_imgNewsPic setImageWithURL:[NSURL URLWithString:[_News valueForKey:@"pictitle"]]];
     [_labelDate setText:[_News valueForKey:@"date"]];
     [_labelTitle setText:[_News valueForKey:@"title"]];
     

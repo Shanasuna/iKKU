@@ -10,6 +10,6 @@
 
 @interface EventViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UITableView *tableViewEvent;
+@property (weak, nonatomic) IBOutlet UITableView *tableViewEvent;
 
 @end

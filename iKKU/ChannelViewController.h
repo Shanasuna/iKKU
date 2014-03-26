@@ -10,6 +10,6 @@
 
 @interface ChannelViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UITableView *tableViewYoutube;
+@property (weak, nonatomic) IBOutlet UITableView *tableViewYoutube;
 
 @end

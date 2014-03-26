@@ -107,14 +107,15 @@ static BOOL isShowMSGDialog;
     [API showLoading];
     
     NSDictionary *params = @{
-                             type : keyword
+                             @"type" : type,
+                             @"q" : keyword
                              };
     
     NSLog(@"Request with Parameter : %@", params);
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
-    [manager GET:[NSString stringWithFormat:@"%@%@", URL, @"/itsupport/ikku_android/hrkku_api.php"] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:[NSString stringWithFormat:@"%@%@", URL, @"/itsupport/ikku_android/hrkku_api_new.php"] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        NSLog(@"JSON: %@", responseObject);
         [API dismissLoading];
         [_delegate searchPersonCompleted:responseObject];

@@ -10,18 +10,18 @@
 
 @interface EventDetailViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollViewEventDetail;
-@property (strong, nonatomic) IBOutlet UIView *viewScrollContent;
-@property (strong, nonatomic) IBOutlet UIImageView *imageViewEvent;
-@property (strong, nonatomic) IBOutlet UILabel *labelDate;
-@property (strong, nonatomic) IBOutlet UILabel *labelTitle;
-@property (strong, nonatomic) IBOutlet UIWebView *webViewDetail;
-@property (strong, nonatomic) IBOutlet UILabel *labelWhen;
-@property (strong, nonatomic) IBOutlet UILabel *labelWhere;
-@property (strong, nonatomic) IBOutlet UILabel *labelAudience;
-@property (strong, nonatomic) IBOutlet UILabel *labelSponsor;
-@property (strong, nonatomic) IBOutlet UILabel *labelContact;
-@property (strong, nonatomic) IBOutlet UIButton *btnLink;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollViewEventDetail;
+@property (weak, nonatomic) IBOutlet UIView *viewScrollContent;
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewEvent;
+@property (weak, nonatomic) IBOutlet UILabel *labelDate;
+@property (weak, nonatomic) IBOutlet UILabel *labelTitle;
+@property (weak, nonatomic) IBOutlet UIWebView *webViewDetail;
+@property (weak, nonatomic) IBOutlet UILabel *labelWhen;
+@property (weak, nonatomic) IBOutlet UILabel *labelWhere;
+@property (weak, nonatomic) IBOutlet UILabel *labelAudience;
+@property (weak, nonatomic) IBOutlet UILabel *labelSponsor;
+@property (weak, nonatomic) IBOutlet UILabel *labelContact;
+@property (weak, nonatomic) IBOutlet UIButton *btnLink;
 
 @property (strong, nonatomic) NSDictionary *Event;
 

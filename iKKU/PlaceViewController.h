@@ -12,11 +12,8 @@
 
 @interface PlaceViewController : UIViewController
 
-@property (strong, nonatomic) GMSMapView *gmsMap;
-@property (strong, nonatomic) CLLocationManager *locationManager;
-
-@property (strong, nonatomic) IBOutlet UIView *viewExpandBTN;
-@property (strong, nonatomic) IBOutlet UIButton *btnToggleViewExpand;
+@property (weak, nonatomic) IBOutlet UIView *viewExpandBTN;
+@property (weak, nonatomic) IBOutlet UIButton *btnToggleViewExpand;
 @property (weak, nonatomic) IBOutlet UIButton *btnFood;
 @property (weak, nonatomic) IBOutlet UIButton *btnCoffee;
 @property (weak, nonatomic) IBOutlet UIButton *btnMeeting;
@@ -27,5 +24,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnToilet;
 @property (weak, nonatomic) IBOutlet UIButton *btnBus;
 @property (weak, nonatomic) IBOutlet UIView *viewMapZone;
+
+@property (strong, nonatomic) GMSMapView *gmsMap;
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end

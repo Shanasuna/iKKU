@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <MessageUI/MFMailComposeViewController.h>
 #import <GoogleMaps/GoogleMaps.h>
 
 #define isiPhone5  ([[UIScreen mainScreen] bounds].size.height == 568) ? YES:NO
@@ -28,6 +29,14 @@
     }
     NSLog(@"Device Model: %@", [UIDevice currentDevice].model);
     NSLog(@"Device Version: %@", [UIDevice currentDevice].systemName);
+//    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavBar"] forBarMetrics:UIBarMetricsDefault];
+    if ([model isEqualToString:@"iPhone Simulator"] || [model isEqualToString:@"iPhone"] || [model isEqualToString:@"iPod touch"]) {
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavBar"] forBarMetrics:UIBarMetricsDefault];
+
+    } else if ([model isEqualToString:@"iPad Simulator"] || [model isEqualToString:@"iPad"]) {
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavBar_iPad"] forBarMetrics:UIBarMetricsDefault];
+
+    }
     
     return YES;
 }

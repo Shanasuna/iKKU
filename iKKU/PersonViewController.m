@@ -23,6 +23,7 @@
 {
     API *api;
     NSArray *pickerList, *DATA;
+    UIImage *navigationBG;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -38,6 +39,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    navigationBG = [[[self navigationController] navigationBar] backgroundImageForBarMetrics:UIBarMetricsDefault];
     
     DATA = nil;
     
@@ -86,6 +89,8 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
+    NSLog(@"Person Memory Warning");
 }
 
 - (void)onTapType:(UIGestureRecognizer *)sender {
@@ -171,11 +176,15 @@
         return;
     }
     if ([MFMailComposeViewController canSendMail]) {
-        MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
+        [[UINavigationBar appearance] setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+        
+        MFMailComposeViewController *controller = [MFMailComposeViewController new];
         [controller setMailComposeDelegate:self];
         [controller setToRecipients:@[[dict valueForKey:@"email"]]];
+        [controller setTitle:@""];
         [self presentViewController:controller animated:YES completion:^{
-            
+//            [controller.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+
         }];
     } else {
         NSLog(@"ERROR to Open Mail");
@@ -185,6 +194,7 @@
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
+    [[UINavigationBar appearance] setBackgroundImage:navigationBG forBarMetrics:UIBarMetricsDefault];
     [controller dismissViewControllerAnimated:YES completion:^{
         if(result == MFMailComposeResultSent) {
             [API showDialog:@"Mail sent"];

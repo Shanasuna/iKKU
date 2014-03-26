@@ -40,8 +40,8 @@
     [queue addOperation:operation];
     
     [_labelName setText:[dict valueForKey:@"name"]];
-    [_labelPosition setText:[dict valueForKey:@"position"]];
-    [_labelDepartment setText:[dict valueForKey:@"dept"]];
+    [_labelPosition setText:[dict valueForKey:@"ename"]];
+    [_labelDepartment setText:[dict valueForKey:@"faculty"]];
     [_labelEmail setText:[dict valueForKey:@"email"]];
 }
 

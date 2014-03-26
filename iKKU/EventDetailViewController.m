@@ -30,10 +30,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [self.navigationItem setTitle:[_Event valueForKey:@"title"]];
-    
-//    [_webViewDetail setDelegate:self];
-    
     for (UIView *view in [_scrollViewEventDetail subviews]) {
         [view removeFromSuperview];
     }

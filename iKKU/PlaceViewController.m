@@ -121,6 +121,8 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
+    NSLog(@"Place Memory Warning");
 }
 
 - (IBAction)onClickType:(UIButton *)sender {
@@ -128,9 +130,6 @@
     TYPE = [sender tag];
     [api getLocationWithType:TYPE];
 }
-//- (IBAction)onClickRefresh:(UIButton *)sender {
-//    [self viewDidLoad];
-//}
 - (IBAction)onClickToggleExpand:(UIButton *)sender
 {
     if ([sender tag] == 0) {

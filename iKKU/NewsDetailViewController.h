@@ -10,10 +10,10 @@
 
 @interface NewsDetailViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UIImageView *imgNewsPic;
-@property (strong, nonatomic) IBOutlet UILabel *labelDate;
-@property (strong, nonatomic) IBOutlet UILabel *labelTitle;
-@property (strong, nonatomic) IBOutlet UIWebView *webViewDetail;
+@property (weak, nonatomic) IBOutlet UIImageView *imgNewsPic;
+@property (weak, nonatomic) IBOutlet UILabel *labelDate;
+@property (weak, nonatomic) IBOutlet UILabel *labelTitle;
+@property (weak, nonatomic) IBOutlet UIWebView *webViewDetail;
 
 @property (strong, nonatomic) NSDictionary *News;
 
