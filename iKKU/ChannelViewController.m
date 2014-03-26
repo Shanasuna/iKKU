@@ -13,7 +13,7 @@
 #import <MediaPlayer/MPMoviePlayerController.h>
 #import "YouTubePlayerViewController.h"
 
-#define LIVE_URL @"http://www.kku.ac.th/kkuchannel/internet-iphone.php"
+#define LIVE_URL @"http://m.kku.ac.th/videos/kkuchannel.php"
 #define LIVE_PIC_URL @"http://www.kku.ac.th/kkuchannel/internet-iphone.php"
 #define LIVE_TITLE @"Live Channel"
 #define LIVE_DESCRIPTION @"KKU Live Channel"
